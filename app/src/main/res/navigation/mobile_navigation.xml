@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/pokemonFragment">
+
+    <fragment
+        android:id="@+id/pokemonFragment"
+        android:name="com.bedirhandroid.pokemontechcase.ui.second.ui.home.PokemonFragment"
+        android:label="@string/menu_pokemons"
+        tools:layout="@layout/fragment_pokemon" >
+        <action
+            android:id="@+id/action_nav_home_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.bedirhandroid.pokemontechcase.ui.second.ui.detail.DetailFragment"
+        android:label="@string/menu_detail"
+        tools:layout="@layout/fragment_detail" />
+</navigation>

@@ -12,7 +12,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.bedirhandroid.pokemontechcase.R
 import com.bedirhandroid.pokemontechcase.base.BaseFragment
+import com.bedirhandroid.pokemontechcase.base.ErrorMessages
 import com.bedirhandroid.pokemontechcase.databinding.FragmentDetailBinding
+import com.bedirhandroid.pokemontechcase.util.Constant.KEY_DATA
 import com.bedirhandroid.pokemontechcase.util.loadImage
 
 class DetailFragment : BaseFragment<FragmentDetailBinding, DetailViewModel>() {
@@ -25,12 +27,12 @@ class DetailFragment : BaseFragment<FragmentDetailBinding, DetailViewModel>() {
     private lateinit var paramFloat: WindowManager.LayoutParams
 
     override fun initView() {
-        detailsId = arguments?.getInt("data", 0)
+        detailsId = arguments?.getInt(KEY_DATA, 0)
         viewModelScope {
             detailsId?.let {
                 getPokemonDetails(it)
             } ?: kotlin.run {
-                viewModel.errorLiveData.postValue("Error")
+                viewModel.errorLiveData.postValue(ErrorMessages.ERROR)
             }
         }
         initOverlayLayout()
@@ -43,7 +45,7 @@ class DetailFragment : BaseFragment<FragmentDetailBinding, DetailViewModel>() {
                     try {
                         windowManager.removeView(floatView)
                     } catch (exc: Error) {
-                        viewModel.errorLiveData.postValue("Error: ${exc.localizedMessage}")
+                        viewModel.errorLiveData.postValue(ErrorMessages.ERROR_WINDOW_MANAGER)
                     }
                 }
             }

@@ -1,25 +1,19 @@
 package com.bedirhandroid.pokemontechcase.base
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.paging.PagingData
-import com.bedirhandroid.pokemontechcase.response.pokemon.PokemonResultModel
-import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.CoroutineStart
 import kotlinx.coroutines.launch
 import java.io.EOFException
 import java.net.ProtocolException
-import java.util.concurrent.Flow
 import java.util.concurrent.TimeoutException
-import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
 import kotlin.coroutines.EmptyCoroutineContext
 
-abstract class BaseViewModel : ViewModel(){
-    val errorLiveData: MutableLiveData<String> = MutableLiveData()
+abstract class BaseViewModel : ViewModel() {
+    val errorLiveData: MutableLiveData<ErrorMessages> = MutableLiveData()
     val showProgress: MutableLiveData<Boolean> = MutableLiveData()
 
 
@@ -34,12 +28,11 @@ abstract class BaseViewModel : ViewModel(){
                 block()
             } catch (exception: Exception) {
                 when (exception) {
-                    is TimeoutException -> errorLiveData.postValue("Zaman Aşımı")
-                    is ProtocolException -> errorLiveData.postValue("Tekrar Dene")
-                    is EOFException -> errorLiveData.postValue(exception.message)
+                    is TimeoutException -> errorLiveData.postValue(ErrorMessages.TIME_OUT)
+                    is ProtocolException -> errorLiveData.postValue(ErrorMessages.TRY_AGAIN)
+                    is EOFException -> errorLiveData.postValue(ErrorMessages.ERROR_EOFE)
                     else -> {
-                        errorLiveData.postValue(exception.message)
-                        Log.e("Exception","${exception.message}",exception)
+                        errorLiveData.postValue(ErrorMessages.UNKNOWN_ERROR)
                     }
                 }
             } finally {

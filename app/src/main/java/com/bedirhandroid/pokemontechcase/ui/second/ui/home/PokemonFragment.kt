@@ -6,6 +6,7 @@ import com.bedirhandroid.pokemontechcase.R
 import com.bedirhandroid.pokemontechcase.base.BaseFragment
 import com.bedirhandroid.pokemontechcase.databinding.FragmentPokemonBinding
 import com.bedirhandroid.pokemontechcase.paging.PokemonLoadingStateAdapter
+import com.bedirhandroid.pokemontechcase.util.Constant.KEY_DATA
 import com.bedirhandroid.pokemontechcase.util.checkConnection
 import com.bedirhandroid.pokemontechcase.util.gone
 import com.bedirhandroid.pokemontechcase.util.navigateWithBundleTo
@@ -30,7 +31,7 @@ class PokemonFragment : BaseFragment<FragmentPokemonBinding, PokemonViewModel>()
 
     private fun checkConnectionView() {
         viewBindingScope {
-            when(checkConnection(requireContext())) {
+            when (checkConnection(requireContext())) {
                 true -> {
                     notConnectionContainer.gone()
                     rvPokemonList.visible()
@@ -63,7 +64,9 @@ class PokemonFragment : BaseFragment<FragmentPokemonBinding, PokemonViewModel>()
     }
 
     private fun onClickAdapter(position: Int) {
-        navigateWithBundleTo(R.id.action_nav_home_to_detailFragment,
-        bundleOf("data" to position+1))
+        navigateWithBundleTo(
+            R.id.action_nav_home_to_detailFragment,
+            bundleOf(KEY_DATA to position + 1)
+        )
     }
 }

@@ -8,7 +8,7 @@ import androidx.paging.LoadStateAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bedirhandroid.pokemontechcase.R
 import com.bedirhandroid.pokemontechcase.databinding.ItemNetworkStateBinding
-import com.bedirhandroid.pokemontechcase.ui.second.ui.home.PokemonListAdapter
+import com.bedirhandroid.pokemontechcase.ui.second.fragments.pokemon.list.PokemonListAdapter
 
 class PokemonLoadingStateAdapter(
     private val adapter: PokemonListAdapter

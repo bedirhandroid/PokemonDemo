@@ -1,4 +1,4 @@
-package com.bedirhandroid.pokemontechcase.ui.second.ui.home
+package com.bedirhandroid.pokemontechcase.ui.second.fragments.pokemon.list
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,10 +6,12 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bedirhandroid.pokemontechcase.databinding.RecyclerRowBinding
-import com.bedirhandroid.pokemontechcase.response.pokemon.PokemonResultModel
+import com.bedirhandroid.pokemontechcase.response.pokemon.listmodels.PokemonResultModel
 
 
-class PokemonListAdapter(val clickItem: (Int) -> Unit): PagingDataAdapter<PokemonResultModel,PokemonListAdapter.PokemonListVH>(POKEMON_COMPARATOR){
+class PokemonListAdapter(val clickItem: (Int) -> Unit): PagingDataAdapter<PokemonResultModel, PokemonListAdapter.PokemonListVH>(
+    POKEMON_COMPARATOR
+){
 
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): PokemonListVH {

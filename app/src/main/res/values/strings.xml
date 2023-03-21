@@ -19,11 +19,12 @@
     <string name="close_application">Close Application</string>
 
     <string name="error_message">Error!</string>
-    <string name="error_time_out">Zaman Aşımı!</string>
-    <string name="error_try_again">Tekrar Dene!</string>
-    <string name="error_eofe">Akış Hatası!</string>
-    <string name="error_unknown">Bilinmeyen Hata!</string>
-    <string name="error_window_manager">Window Manager Hatası!</string>
+    <string name="error_time_out">Time Out!</string>
+    <string name="error_try_again">Try Again!</string>
+    <string name="error_eofe">Flow Error!</string>
+    <string name="error_unknown">Unknown Error!</string>
+    <string name="error_window_manager">Window Manager Error!</string>
+    <string name="error_no_internet_connection">Not Internet Connection!</string>
 
 
 </resources>

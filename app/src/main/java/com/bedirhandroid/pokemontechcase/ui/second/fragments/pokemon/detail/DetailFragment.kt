@@ -1,4 +1,4 @@
-package com.bedirhandroid.pokemontechcase.ui.second.ui.detail
+package com.bedirhandroid.pokemontechcase.ui.second.fragments.pokemon.detail
 
 import android.content.Context
 import android.graphics.PixelFormat

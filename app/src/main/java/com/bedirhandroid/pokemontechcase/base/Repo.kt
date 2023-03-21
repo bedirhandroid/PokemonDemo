@@ -5,8 +5,8 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.bedirhandroid.pokemontechcase.api.ApiService
 import com.bedirhandroid.pokemontechcase.paging.PokemonPagingAdapter
-import com.bedirhandroid.pokemontechcase.response.pokemon.PokemonDetailResponse
-import com.bedirhandroid.pokemontechcase.response.pokemon.PokemonResultModel
+import com.bedirhandroid.pokemontechcase.response.pokemon.detailmodels.PokemonDetailResponse
+import com.bedirhandroid.pokemontechcase.response.pokemon.listmodels.PokemonResultModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject

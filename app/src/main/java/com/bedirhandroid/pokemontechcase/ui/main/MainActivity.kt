@@ -12,7 +12,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.bedirhandroid.pokemontechcase.databinding.ActivityMainBinding
-import com.bedirhandroid.pokemontechcase.ui.second.SecondActivity
+import com.bedirhandroid.pokemontechcase.ui.second.activity.SecondActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 

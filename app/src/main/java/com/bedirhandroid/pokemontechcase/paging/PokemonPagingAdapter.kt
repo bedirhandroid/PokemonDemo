@@ -3,7 +3,7 @@ package com.bedirhandroid.pokemontechcase.paging
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.bedirhandroid.pokemontechcase.api.ApiService
-import com.bedirhandroid.pokemontechcase.response.pokemon.PokemonResultModel
+import com.bedirhandroid.pokemontechcase.response.pokemon.listmodels.PokemonResultModel
 import com.bedirhandroid.pokemontechcase.util.Constant.START_OFFSET
 import java.io.IOException
 import javax.inject.Inject

@@ -1,4 +1,4 @@
-package com.bedirhandroid.pokemontechcase.ui.second
+package com.bedirhandroid.pokemontechcase.ui.second.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -37,9 +37,9 @@ class SecondActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
         navView.setNavigationItemSelectedListener {
-            when(it.title) {
-                "Close Application" -> {
-                    finish()
+            when(it.itemId) {
+                R.id.pokemon_fragment_id -> {
+                    finishAffinity()
                     true
                 }
                 else -> {

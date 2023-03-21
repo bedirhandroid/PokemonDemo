@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/pokemonFragment"
-        android:name="com.bedirhandroid.pokemontechcase.ui.second.ui.home.PokemonFragment"
+        android:name="com.bedirhandroid.pokemontechcase.ui.second.fragments.pokemon.list.PokemonFragment"
         android:label="@string/menu_pokemons"
         tools:layout="@layout/fragment_pokemon" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
-        android:name="com.bedirhandroid.pokemontechcase.ui.second.ui.detail.DetailFragment"
+        android:name="com.bedirhandroid.pokemontechcase.ui.second.fragments.pokemon.detail.DetailFragment"
         android:label="@string/menu_detail"
         tools:layout="@layout/fragment_detail" />
 </navigation>

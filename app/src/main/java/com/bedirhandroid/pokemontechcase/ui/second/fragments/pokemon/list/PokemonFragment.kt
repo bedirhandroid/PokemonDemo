@@ -1,4 +1,4 @@
-package com.bedirhandroid.pokemontechcase.ui.second.ui.home
+package com.bedirhandroid.pokemontechcase.ui.second.fragments.pokemon.list
 
 import androidx.core.os.bundleOf
 import androidx.lifecycle.lifecycleScope

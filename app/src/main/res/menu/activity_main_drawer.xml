@@ -4,6 +4,6 @@
     tools:showIn="navigation_view">
 
     <item
-        android:id="@+id/pokemonFragment_id"
-        android:title="@string/close_application" />
+        android:id="@+id/pokemon_fragment_id"
+        android:title="@string/close_application"/>
 </menu>

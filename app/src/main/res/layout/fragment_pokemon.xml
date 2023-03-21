@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.second.ui.home.PokemonFragment">
+    tools:context=".ui.second.fragments.pokemon.list.PokemonFragment">
         
         <LinearLayout
             android:id="@+id/not_connection_container"
@@ -28,7 +28,7 @@
                 <TextView
                     android:id="@+id/tv_not_connection"
                     android:layout_width="match_parent"
-                    android:text="Not Internet Connection"
+                    android:text="@string/error_no_internet_connection"
                     android:textAlignment="center"
                     android:textSize="24sp"
                     android:layout_height="wrap_content"/>
@@ -37,7 +37,7 @@
                     android:id="@+id/btn_not_connection"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Try Again!"/>
+                    android:text="@string/error_try_again"/>
 
         </LinearLayout>
 

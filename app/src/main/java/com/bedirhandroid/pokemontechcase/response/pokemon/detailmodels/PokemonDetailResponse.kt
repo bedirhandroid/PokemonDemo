@@ -1,4 +1,4 @@
-package com.bedirhandroid.pokemontechcase.response.pokemon
+package com.bedirhandroid.pokemontechcase.response.pokemon.detailmodels
 
 data class PokemonDetailResponse(
     val height: Int? = null,

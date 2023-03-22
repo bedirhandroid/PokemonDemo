@@ -63,10 +63,10 @@ class DetailFragment : BaseFragment<FragmentDetailBinding, DetailViewModel>() {
     private fun drawOverlayScreen() {
         floatView.apply {
             viewModel.pokemonLiveData.value?.let { _data ->
-                _data.sprites?.front_default?.let {
+                _data.sprites?.frontImage?.let {
                     findViewById<ImageView>(R.id.iv_front).loadImage(it)
                 }
-                _data.sprites?.back_default?.let {
+                _data.sprites?.backImage?.let {
                     findViewById<ImageView>(R.id.iv_back).loadImage(it)
                 }
                 _data.name?.let {
@@ -84,7 +84,7 @@ class DetailFragment : BaseFragment<FragmentDetailBinding, DetailViewModel>() {
                     tvPokeHeight.text = getString(R.string.pokemon_height, it.height)
                     tvPokeWeight.text = getString(R.string.pokemon_weight, it.weight)
                     btnOverlay.text = getString(R.string.pokemon_btn_name, it.name)
-                    it.sprites?.front_default?.let (ivPokemonDetails::loadImage)
+                    it.sprites?.frontImage?.let (ivPokemonDetails::loadImage)
                 }
             }
         }

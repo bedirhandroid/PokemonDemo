@@ -1,6 +1,10 @@
 package com.bedirhandroid.pokemontechcase.response.pokemon.detailmodels
 
+import com.google.gson.annotations.SerializedName
+
 data class Sprites(
-    val front_default: String? = null,
-    val back_default: String? = null
+    @SerializedName("front_default")
+    val frontImage: String? = null,
+    @SerializedName("back_default")
+    val backImage: String? = null
 )

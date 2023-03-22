@@ -13,6 +13,7 @@ import javax.inject.Inject
 
 class Repo @Inject constructor(private val apiService : ApiService) {
 
+    //Pokemon repo
     fun getPokemonList() : Flow<PagingData<PokemonResultModel>> {
         return Pager(
             config = PagingConfig(

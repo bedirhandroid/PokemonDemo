@@ -11,7 +11,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
-
+//timeout sec.
 const val API_TIMEOUT = 15L
 
 @Module
@@ -21,6 +21,7 @@ object ApiClient {
 
     @Singleton
     @Provides
+    //init client with base url
     fun getClient(): ApiService {
         if (retrofit == null) {
             retrofit = Retrofit.Builder()

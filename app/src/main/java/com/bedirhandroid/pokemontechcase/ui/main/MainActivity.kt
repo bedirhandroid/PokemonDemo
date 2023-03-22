@@ -27,6 +27,7 @@ class MainActivity : AppCompatActivity() {
         setListeners()
     }
 
+    //check overlay permission
     private fun checkPermissions() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             when (Settings.canDrawOverlays(this)) {
@@ -75,6 +76,7 @@ class MainActivity : AppCompatActivity() {
                 true -> goNextScreen()
                 else -> {
                     Intent(
+                        //intent directly app settings
                         Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
                         Uri.parse("package:$packageName")
                     ).also { startActivity(it) }

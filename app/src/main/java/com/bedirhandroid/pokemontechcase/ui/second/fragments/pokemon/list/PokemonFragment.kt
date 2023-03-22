@@ -30,6 +30,7 @@ class PokemonFragment : BaseFragment<FragmentPokemonBinding, PokemonViewModel>()
     }
 
     private fun checkConnectionView() {
+        //check Connection and init view
         viewBindingScope {
             when (checkConnection(requireContext())) {
                 true -> {
@@ -57,6 +58,7 @@ class PokemonFragment : BaseFragment<FragmentPokemonBinding, PokemonViewModel>()
         viewModelScope {
             viewLifecycleOwner.lifecycleScope.launch {
                 getPokemonList().collectLatest { _data ->
+                    //post data from PagingAdapter
                     pokemonListAdapter?.submitData(_data)
                 }
             }
@@ -64,6 +66,7 @@ class PokemonFragment : BaseFragment<FragmentPokemonBinding, PokemonViewModel>()
     }
 
     private fun onClickAdapter(position: Int) {
+        //navigate other fragment with data
         navigateWithBundleTo(
             R.id.action_nav_home_to_detailFragment,
             bundleOf(KEY_DATA to position + 1)

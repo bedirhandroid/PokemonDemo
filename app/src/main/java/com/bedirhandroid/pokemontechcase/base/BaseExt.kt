@@ -7,6 +7,7 @@ import androidx.fragment.app.createViewModelLazy
 import androidx.lifecycle.ViewModel
 import java.lang.reflect.Method
 
+//init generic binding classes for fragment
 fun <T> Class<T>.getBindingMethod(): Method {
     return this.getMethod(
         "inflate",
@@ -15,6 +16,7 @@ fun <T> Class<T>.getBindingMethod(): Method {
         Boolean::class.java
     )
 }
+//init dynamic viewModel classes for fragment
 fun <VM : ViewModel> Class<VM>.getViewModelByLazy(owner: Fragment): VM {
     return owner.createViewModelLazy(this.kotlin,{owner.viewModelStore}).value
 }

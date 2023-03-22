@@ -3,6 +3,7 @@ package com.bedirhandroid.pokemontechcase.base
 import com.bedirhandroid.pokemontechcase.R
 
 enum class ErrorMessages(val id : Int) {
+    //Error message Types
     ERROR(R.string.error_message),
     UNKNOWN_ERROR(R.string.error_unknown),
     TIME_OUT(R.string.error_time_out),

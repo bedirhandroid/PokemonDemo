@@ -7,6 +7,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 
 
+//infix funcs for views visibility
 infix fun View.visibleIf(bool: Boolean) =
     if (bool) visible() else gone()
 
@@ -18,6 +19,7 @@ fun View.visible() {
     this.visibility = View.VISIBLE
 }
 
+//ImageView ext for load image
 fun ImageView.loadImage(url: String) {
     Glide.with(this.context)
         .load(url)

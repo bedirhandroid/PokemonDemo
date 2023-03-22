@@ -10,6 +10,7 @@ import com.bedirhandroid.pokemontechcase.R
 import com.bedirhandroid.pokemontechcase.databinding.ItemNetworkStateBinding
 import com.bedirhandroid.pokemontechcase.ui.second.fragments.pokemon.list.PokemonListAdapter
 
+//Pokemon state adapter like -> Loading, Timeout, error
 class PokemonLoadingStateAdapter(
     private val adapter: PokemonListAdapter
 ) : LoadStateAdapter<PokemonLoadingStateAdapter.NetworkStateItemViewHolder>() {

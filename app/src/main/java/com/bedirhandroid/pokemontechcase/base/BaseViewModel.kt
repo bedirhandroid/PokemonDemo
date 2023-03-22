@@ -17,6 +17,7 @@ abstract class BaseViewModel : ViewModel() {
     val showProgress: MutableLiveData<Boolean> = MutableLiveData()
 
 
+    //inline coroutines scope
     protected inline fun sendRequest(
         context: CoroutineContext = EmptyCoroutineContext,
         start: CoroutineStart = CoroutineStart.DEFAULT,

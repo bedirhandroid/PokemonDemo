@@ -1,6 +1,7 @@
 package com.bedirhandroid.pokemontechcase.response.pokemon.listmodels
 
 
+//data class for Pokemon List request
 data class PokemonResponse(
     val count: Int? = null,
     val next: String? = null,

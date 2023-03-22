@@ -53,15 +53,18 @@ abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel> : HiltFragment
         return binding.root
     }
 
+    //viewModel scope
     protected inline fun viewModelScope(action: VM.() -> Unit) {
         action(viewModel)
     }
 
+    //binding scope
     protected inline fun viewBindingScope(action: VB.() -> Unit) {
         action(binding)
     }
 
     private fun observeBaseLiveData() {
+        //observe baseViewModel LiveDatas
         viewModelScope {
             this.errorLiveData.observe(viewLifecycleOwner) {
                 Toast.makeText(requireContext(), getString(it.id), Toast.LENGTH_SHORT).show()
@@ -80,6 +83,7 @@ abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel> : HiltFragment
         }
     }
 
+    //dynamic generic flow scope
     inline fun <T> Flow<T>.observeStateFlow(crossinline block: suspend T.() -> Unit) {
         lifecycleScope.launch {
             collect {

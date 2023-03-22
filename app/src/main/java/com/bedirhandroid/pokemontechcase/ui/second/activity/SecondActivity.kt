@@ -37,6 +37,7 @@ class SecondActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
         navView.setNavigationItemSelectedListener {
+            //navView item click listener
             when(it.itemId) {
                 R.id.pokemon_fragment_id -> {
                     finishAffinity()

@@ -8,6 +8,7 @@ import com.bedirhandroid.pokemontechcase.util.Constant.START_OFFSET
 import java.io.IOException
 import javax.inject.Inject
 
+//Default Paging Adapter
 class PokemonPagingAdapter @Inject constructor(private val apiService: ApiService) :
     PagingSource<Int, PokemonResultModel>() {
     override fun getRefreshKey(state: PagingState<Int, PokemonResultModel>): Int? {

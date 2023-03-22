@@ -13,13 +13,15 @@ import javax.inject.Inject
 @HiltViewModel
 class DetailViewModel @Inject constructor(private val repo: Repo) : BaseViewModel() {
 
+    //encapsulation liveData
     private val mutablePokemonLiveData = MutableLiveData<PokemonDetailResponse>()
-    val pokemonLiveData : LiveData<PokemonDetailResponse> get() = mutablePokemonLiveData
+    val pokemonLiveData: LiveData<PokemonDetailResponse> get() = mutablePokemonLiveData
 
+    //get Pokemon Details from Repo
     fun getPokemonDetails(id: Int) {
         sendRequest {
             repo.pokemonDetail(id).collectLatest {
-                it?.let (mutablePokemonLiveData::postValue) ?: kotlin.run {
+                it?.let(mutablePokemonLiveData::postValue) ?: kotlin.run {
                     errorLiveData.postValue(ErrorMessages.ERROR)
                 }
             }

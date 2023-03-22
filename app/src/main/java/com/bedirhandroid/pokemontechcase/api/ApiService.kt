@@ -10,12 +10,14 @@ import retrofit2.http.Query
 
 interface ApiService {
 
+    //pokemon request with dynamic offset
     @GET("pokemon")
     suspend fun getPokemonList(
         @Query("offset") offset: Int,
         @Query("limit") limit : Int? = STATIC_LIMIT
     ) : PokemonResponse
 
+    //pokemon detail request with dynamic path
     @GET("pokemon/{subUrl}")
     suspend fun pokemonDetails(@Path (value = "subUrl") subUrl: Int): PokemonDetailResponse
 }

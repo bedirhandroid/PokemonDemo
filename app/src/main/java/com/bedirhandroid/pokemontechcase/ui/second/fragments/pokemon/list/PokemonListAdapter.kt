@@ -9,21 +9,26 @@ import com.bedirhandroid.pokemontechcase.databinding.RecyclerRowBinding
 import com.bedirhandroid.pokemontechcase.response.pokemon.listmodels.PokemonResultModel
 
 
-class PokemonListAdapter(private val clickItem: (Int) -> Unit): PagingDataAdapter<PokemonResultModel, PokemonListAdapter.PokemonListVH>(
-    POKEMON_COMPARATOR
-){
+class PokemonListAdapter(private val clickItem: (Int) -> Unit) :
+    PagingDataAdapter<PokemonResultModel, PokemonListAdapter.PokemonListVH>(
+        POKEMON_COMPARATOR
+    ) {
 
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): PokemonListVH {
-        val binding = RecyclerRowBinding.inflate(LayoutInflater.from(viewGroup.context), viewGroup, false)
+        //init adapter row binding
+        val binding =
+            RecyclerRowBinding.inflate(LayoutInflater.from(viewGroup.context), viewGroup, false)
         return PokemonListVH(binding)
     }
 
     override fun onBindViewHolder(holder: PokemonListVH, position: Int) {
         holder.bind(getItem(position)?.name)
+        //sends the position of the selected elements
         holder.binding.tvPokemonName.setOnClickListener { clickItem.invoke(position) }
     }
 
+    //For Paging override funcs
     companion object {
         private val POKEMON_COMPARATOR = object : DiffUtil.ItemCallback<PokemonResultModel>() {
             override fun areItemsTheSame(
@@ -40,12 +45,12 @@ class PokemonListAdapter(private val clickItem: (Int) -> Unit): PagingDataAdapte
                 return oldItem == newItem
             }
         }
-}
+    }
 
-    class PokemonListVH(val binding: RecyclerRowBinding,) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(path: String?) {
-            path?.let {
-                binding.tvPokemonName.text = path
+    class PokemonListVH(val binding: RecyclerRowBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(name: String?) {
+            name?.let {
+                binding.tvPokemonName.text = name
             }
         }
     }

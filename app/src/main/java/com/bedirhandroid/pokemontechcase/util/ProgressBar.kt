@@ -13,6 +13,7 @@ import com.bedirhandroid.pokemontechcase.R
 
 private const val TAG = "ProgressBar"
 
+//Progress Bar for base Fragment
 class ProgressBar : DialogFragment() {
     lateinit var observer: MutableLiveData<Boolean>
 

@@ -19,19 +19,21 @@ import com.bedirhandroid.pokemontechcase.util.loadImage
 
 class DetailFragment : BaseFragment<FragmentDetailBinding, DetailViewModel>() {
     private var detailsId: Int? = null
+    //window manager for float view
     private val windowManager by lazy {
         requireActivity().getSystemService(Context.WINDOW_SERVICE)
                 as WindowManager
     }
+    //floatView
     private lateinit var floatView: View
+    //floatView params
     private lateinit var paramFloat: WindowManager.LayoutParams
 
     override fun initView() {
+        //getArguments
         detailsId = arguments?.getInt(KEY_DATA, 0)
         viewModelScope {
-            detailsId?.let {
-                getPokemonDetails(it)
-            } ?: kotlin.run {
+            detailsId?.let(::getPokemonDetails) ?: kotlin.run {
                 viewModel.errorLiveData.postValue(ErrorMessages.ERROR)
             }
         }
@@ -43,8 +45,10 @@ class DetailFragment : BaseFragment<FragmentDetailBinding, DetailViewModel>() {
             floatView.apply {
                 findViewById<Button>(R.id.btn_close_popup).setOnClickListener {
                     try {
+                        //dismiss floatView
                         windowManager.removeView(floatView)
                     } catch (exc: Error) {
+                        //catch error
                         viewModel.errorLiveData.postValue(ErrorMessages.ERROR_WINDOW_MANAGER)
                     }
                 }
@@ -52,8 +56,10 @@ class DetailFragment : BaseFragment<FragmentDetailBinding, DetailViewModel>() {
             btnOverlay.setOnClickListener {
                 drawOverlayScreen()
                 try {
+                    //update if floatView is open
                     windowManager.updateViewLayout(floatView, paramFloat)
                 } catch (exc: Exception) {
+                    //addItem if floatView is not init
                     windowManager.addView(floatView, paramFloat)
                 }
             }
@@ -61,6 +67,7 @@ class DetailFragment : BaseFragment<FragmentDetailBinding, DetailViewModel>() {
     }
 
     private fun drawOverlayScreen() {
+        //set data floatView views
         floatView.apply {
             viewModel.pokemonLiveData.value?.let { _data ->
                 _data.sprites?.frontImage?.let {
@@ -77,6 +84,7 @@ class DetailFragment : BaseFragment<FragmentDetailBinding, DetailViewModel>() {
     }
 
     override fun initObservers() {
+        //observe live data
         viewModelScope {
             pokemonLiveData.observe(this@DetailFragment) {
                 viewBindingScope {
@@ -91,6 +99,7 @@ class DetailFragment : BaseFragment<FragmentDetailBinding, DetailViewModel>() {
     }
 
     private fun initOverlayLayout() {
+        //init floatView views
         floatView =
             (requireActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater).inflate(
                 R.layout.layout_overlay_popup,
@@ -98,6 +107,7 @@ class DetailFragment : BaseFragment<FragmentDetailBinding, DetailViewModel>() {
                 false
             )
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            //floatView params init
             paramFloat = WindowManager.LayoutParams(
                 WindowManager.LayoutParams.WRAP_CONTENT,
                 WindowManager.LayoutParams.WRAP_CONTENT,

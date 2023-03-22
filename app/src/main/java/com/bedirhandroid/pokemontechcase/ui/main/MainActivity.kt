@@ -5,12 +5,10 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
-import android.util.Log
 import android.widget.Toast
-import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import com.bedirhandroid.pokemontechcase.R
 import com.bedirhandroid.pokemontechcase.databinding.ActivityMainBinding
 import com.bedirhandroid.pokemontechcase.ui.second.activity.SecondActivity
 import dagger.hilt.android.AndroidEntryPoint
@@ -29,20 +27,16 @@ class MainActivity : AppCompatActivity() {
         setListeners()
     }
 
-    private val requestPermissionLauncher : ActivityResultLauncher<Intent> = registerForActivityResult(
-        ActivityResultContracts.StartActivityForResult()
-        ) {
-        Log.d("Bedirhan", "${it.data}: DATA")
-        Log.d("Bedirhan", "${it.resultCode}: RESULT_CODE")
-    }
-
-
     private fun checkPermissions() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             when (Settings.canDrawOverlays(this)) {
                 true -> goNextScreen()
                 else -> {
-                    Toast.makeText(this, "İzin vermek için butona tıklayınız!", Toast.LENGTH_SHORT)
+                    Toast.makeText(
+                        this,
+                        getString(R.string.get_permissions_toast),
+                        Toast.LENGTH_SHORT
+                    )
                         .show()
                 }
             }
@@ -69,9 +63,7 @@ class MainActivity : AppCompatActivity() {
     private fun getPermissions() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             when (Settings.canDrawOverlays(this)) {
-                true -> {
-                    Toast.makeText(this, "true", Toast.LENGTH_SHORT).show()
-                }
+                true -> { Toast.makeText(this, "true", Toast.LENGTH_SHORT).show() }
                 else -> goToSettingsPage()
             }
         }
@@ -82,12 +74,10 @@ class MainActivity : AppCompatActivity() {
             when (Settings.canDrawOverlays(this)) {
                 true -> goNextScreen()
                 else -> {
-                    val intent = Intent(
+                    Intent(
                         Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
                         Uri.parse("package:$packageName")
-                    )
-
-                    requestPermissionLauncher.launch(intent)
+                    ).also { startActivity(it) }
                 }
             }
         }

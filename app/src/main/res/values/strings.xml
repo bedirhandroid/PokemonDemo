@@ -26,5 +26,8 @@
     <string name="error_window_manager">Window Manager Error!</string>
     <string name="error_no_internet_connection">Not Internet Connection!</string>
 
+    <string name="get_permissions">Get Permission</string>
 
+
+    <string name="get_permissions_toast">İzin vermek için butona tıklayınız!</string>
 </resources>

@@ -9,7 +9,7 @@ import com.bedirhandroid.pokemontechcase.databinding.RecyclerRowBinding
 import com.bedirhandroid.pokemontechcase.response.pokemon.listmodels.PokemonResultModel
 
 
-class PokemonListAdapter(val clickItem: (Int) -> Unit): PagingDataAdapter<PokemonResultModel, PokemonListAdapter.PokemonListVH>(
+class PokemonListAdapter(private val clickItem: (Int) -> Unit): PagingDataAdapter<PokemonResultModel, PokemonListAdapter.PokemonListVH>(
     POKEMON_COMPARATOR
 ){
 

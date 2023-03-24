@@ -2,13 +2,13 @@ package com.bedirhandroid.pokemontechcase.paging
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.view.isVisible
 import androidx.paging.LoadState
 import androidx.paging.LoadStateAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bedirhandroid.pokemontechcase.R
 import com.bedirhandroid.pokemontechcase.databinding.ItemNetworkStateBinding
 import com.bedirhandroid.pokemontechcase.ui.second.fragments.pokemon.list.PokemonListAdapter
+import com.bedirhandroid.pokemontechcase.util.visibleIf
 
 //Pokemon state adapter like -> Loading, Timeout, error
 class PokemonLoadingStateAdapter(
@@ -27,9 +27,9 @@ class PokemonLoadingStateAdapter(
 
         fun bind(loadState: LoadState) {
             with(binding) {
-                progressBar.isVisible = loadState is LoadState.Loading
-                retryButton.isVisible = loadState is LoadState.Error
-                errorMsg.isVisible =
+                progressBar visibleIf  (loadState is LoadState.Loading)
+                retryButton visibleIf  (loadState is LoadState.Error)
+                errorMsg visibleIf
                     !(loadState as? LoadState.Error)?.error?.message.isNullOrBlank()
                 errorMsg.text = (loadState as? LoadState.Error)?.error?.message
             }

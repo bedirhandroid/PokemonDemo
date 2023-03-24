@@ -18,14 +18,14 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class PokemonFragment : BaseFragment<FragmentPokemonBinding, PokemonViewModel>() {
 
-    private var pokemonListAdapter: PokemonListAdapter? = null
+    private lateinit var pokemonListAdapter: PokemonListAdapter
 
     override fun initView() {
         checkConnectionView()
         pokemonListAdapter = PokemonListAdapter(::onClickAdapter)
         binding.rvPokemonList.adapter =
-            pokemonListAdapter?.withLoadStateFooter(
-                footer = PokemonLoadingStateAdapter(pokemonListAdapter!!)
+            pokemonListAdapter.withLoadStateFooter(
+                footer = PokemonLoadingStateAdapter(pokemonListAdapter)
             )
     }
 
@@ -48,7 +48,7 @@ class PokemonFragment : BaseFragment<FragmentPokemonBinding, PokemonViewModel>()
     override fun initListeners() {
         viewBindingScope {
             btnNotConnection.setOnClickListener {
-                pokemonListAdapter?.refresh()
+                pokemonListAdapter.refresh()
                 checkConnectionView()
             }
         }
@@ -59,7 +59,7 @@ class PokemonFragment : BaseFragment<FragmentPokemonBinding, PokemonViewModel>()
             viewLifecycleOwner.lifecycleScope.launch {
                 getPokemonList().collectLatest { _data ->
                     //post data from PagingAdapter
-                    pokemonListAdapter?.submitData(_data)
+                    pokemonListAdapter.submitData(_data)
                 }
             }
         }

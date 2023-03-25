@@ -4,7 +4,6 @@ import android.view.View
 import android.widget.ImageView
 import com.bedirhandroid.pokemontechcase.R
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.DiskCacheStrategy
 
 
 //infix funcs for views visibility

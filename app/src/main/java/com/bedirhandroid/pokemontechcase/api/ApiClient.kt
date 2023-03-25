@@ -17,21 +17,20 @@ const val API_TIMEOUT = 15L
 @Module
 @InstallIn(SingletonComponent::class)
 object ApiClient {
-    private var retrofit: ApiService? = null
 
     @Singleton
     @Provides
     //init client with base url
     fun getClient(): ApiService {
-        if (retrofit == null) {
-            retrofit = Retrofit.Builder()
+        val retrofit: ApiService by lazy {
+             Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client())
                 .build()
                 .create(ApiService::class.java)
         }
-        return retrofit as ApiService
+        return retrofit
     }
 
     private fun client(): OkHttpClient {

@@ -57,7 +57,7 @@ class PokemonFragment : BaseFragment<FragmentPokemonBinding, PokemonViewModel>()
     override fun initObservers() {
         viewModelScope {
             viewLifecycleOwner.lifecycleScope.launch {
-                getPokemonList().collectLatest { _data ->
+                getPokemonList.collectLatest { _data ->
                     //post data from PagingAdapter
                     pokemonListAdapter.submitData(_data)
                 }

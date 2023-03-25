@@ -14,8 +14,6 @@ import javax.inject.Inject
 class PokemonViewModel @Inject constructor(private val repo: Repo) : BaseViewModel() {
 
     //getList with Paging
-    fun getPokemonList(): Flow<PagingData<PokemonResultModel>> {
-        //cachedIn -> cache data in viewModel lifecycle
-        return repo.getPokemonList().cachedIn(viewModelScope)
-    }
+    val getPokemonList: Flow<PagingData<PokemonResultModel>> =
+        repo.getPokemonList().cachedIn(viewModelScope)
 }

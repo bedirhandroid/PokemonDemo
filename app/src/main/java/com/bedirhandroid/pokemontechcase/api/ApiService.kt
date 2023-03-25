@@ -1,7 +1,7 @@
 package com.bedirhandroid.pokemontechcase.api
 
-import com.bedirhandroid.pokemontechcase.response.pokemon.listmodels.PokemonResponse
 import com.bedirhandroid.pokemontechcase.response.pokemon.detailmodels.PokemonDetailResponse
+import com.bedirhandroid.pokemontechcase.response.pokemon.listmodels.PokemonResponse
 import com.bedirhandroid.pokemontechcase.util.Constant.STATIC_LIMIT
 import retrofit2.http.GET
 import retrofit2.http.Path
